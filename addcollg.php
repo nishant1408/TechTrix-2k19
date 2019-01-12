@@ -2,7 +2,7 @@
 
 session_start();
 include 'connect.php' ;
-if(isset($_SESSION['uid']))
+if(isset($_SESSION['uid']) && ($_SESSION['type'] == 'a' || $_SESSION['type'] == 'r' ))
 {
 	$uid=$_SESSION["uid"];
 	$select="SELECT name from user where uid='$uid'";
@@ -16,7 +16,8 @@ if(isset($_SESSION['uid']))
 }
 else
 {
-	echo "<script>location.href='login.php'</script>";
+	echo "<script>alert('YOU ARE NOT AN ADMIN OR REGISTRATION DESK MEMBER')</script>";
+	echo "<script>location.href='dashboard.php'</script>";
 }
 include 'header.php';
 ?>
@@ -27,8 +28,9 @@ include 'header.php';
 			<div class="login-body">
 					<input type="text" class="form-control bfh-states" id="name" placeholder="College Name" ><br>
 					<button class="form-control bfh-states" type="submit" id="add" style="background-color:#0069cc;"  ><font color='white'><b> ADD COLLEGE </b></font></button>
+					<p id="output"></p><br>
 					<button class="form-control bfh-states" type="submit" id="new" style="background-color:#0069cc;" ><font color='white'><b> ADD NEW COLLEGE</b></font></button>
-					<p id="output"></p>
+					
 				</form>
 			</div>   
 		</div>
