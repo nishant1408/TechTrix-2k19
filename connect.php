@@ -1,4 +1,4 @@
 
 <?php
-$connect=mysqli_connect('localhost','root','','Techtrix');
+$connect=mysqli_connect('localhost','admin','','techtrixdb');
 ?>
